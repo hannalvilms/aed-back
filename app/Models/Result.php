@@ -11,4 +11,9 @@ class Result extends Model
     protected $fillable = [
         'user_id', 'game_id', 'score'
     ];
+
+    public function games()
+    {
+        return $this->belongsTo(Game::class);
+    }
 }
