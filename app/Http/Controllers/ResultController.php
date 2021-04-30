@@ -49,6 +49,7 @@ class ResultController extends Controller
         $result = new Result();
         $result->game_id = $request->game_id;
         $result->score = $request->score;
+        $result->grade = $request->grade;
         $result->user_id = Auth::user()->id;
 
         if (auth()->user()->results()->save($result))

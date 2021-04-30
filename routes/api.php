@@ -23,7 +23,7 @@ Route::post('login', [PassportAuthController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
     Route::get('users', [UserController::class, 'getUser']);
-    Route::delete('users', [UserController::class, 'destroy']);
+    Route::delete('users/{id}', [UserController::class, 'destroy']);
     Route::get('all-users', [UserController::class, 'index']);
     Route::resource('games', GameController::class);
     Route::get('results', [ResultController::class, 'index']);

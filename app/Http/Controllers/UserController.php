@@ -32,24 +32,32 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        $result = auth()->user()->results()->find($id);
+        if (Auth::user()->id == 38) {
+            $result = auth()->user()->find($id);
 
-        if (!$result) {
-            return response()->json([
-                'success' => false,
-                'message' => 'User not found'
-            ], 400);
-        }
+            if (!$result) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'User not found'
+                ], 400);
+            }
 
-        if ($result->delete()) {
-            return response()->json([
-                'success' => true
-            ]);
+            if ($result->delete()) {
+                return response()->json([
+                    'success' => true
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'User can not be deleted'
+                ], 500);
+            }
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'User can not be deleted'
+                'message' => 'Pole õigusi!!!!!!'
             ], 500);
         }
+
     }
 }
