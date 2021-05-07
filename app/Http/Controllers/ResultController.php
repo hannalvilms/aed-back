@@ -14,7 +14,18 @@ class ResultController extends Controller
      */
     public function index(): \Illuminate\Http\JsonResponse
     {
-        $results = auth()->user()->results;
+        $userResults = auth()->user()->results;
+        $results = [];
+        foreach ($userResults as $result) {
+            if (isset($result->game_id)) {
+                $game = Game::find($result->game_id);
+                $results[] = [
+                    'name' => $game->name,
+                    'description' => $game->description,
+                    'score' => $result->score
+                ];
+            }
+        }
 
         return response()->json([
             'success' => true,
