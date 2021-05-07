@@ -22,7 +22,7 @@ class ResultController extends Controller
         ]);
     }
 
-    public function show($id)
+    /*public function show($id)
     {
         $result = auth()->user()->results()->find($id);
 
@@ -37,7 +37,7 @@ class ResultController extends Controller
             'success' => true,
             'data' => $result->toArray()
         ]);
-    }
+    }*/
 
     public function store(Request $request)
     {
@@ -88,7 +88,7 @@ class ResultController extends Controller
             ], 500);
     }
 */
-    public function destroy($id)
+   /* public function destroy($id)
     {
         $result = auth()->user()->results()->find($id);
 
@@ -109,5 +109,5 @@ class ResultController extends Controller
                 'message' => 'Result can not be deleted'
             ], 500);
         }
-    }
+    }*/
 }

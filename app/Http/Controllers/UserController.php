@@ -12,9 +12,10 @@ class UserController extends Controller
         if (Auth::user()->admin != 1) {
             return response()->json([
                 'success' => false,
-                'message' => 'NA'
+                'data' => []
             ]);
         }
+
         $users = User::all();
 
         return response()->json([
