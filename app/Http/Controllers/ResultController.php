@@ -22,7 +22,8 @@ class ResultController extends Controller
                 $results[] = [
                     'name' => $game->name,
                     'description' => $game->description,
-                    'score' => $result->score
+                    'score' => $result->score,
+                    'grade' => $result->grade
                 ];
             }
         }
