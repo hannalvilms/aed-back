@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     public function index()
     {
+        if (Auth::user()->admin != 1) {
+            return response()->json([
+                'success' => false,
+                'message' => 'NA'
+            ]);
+        }
         $users = User::all();
 
         return response()->json([
@@ -32,7 +37,7 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        if (Auth::user()->id == 38) {
+        if (Auth::user()->admin == 1) {
             $result = auth()->user()->find($id);
 
             if (!$result) {
@@ -59,5 +64,14 @@ class UserController extends Controller
             ], 500);
         }
 
+    }
+
+    public function isAdmin() {
+        $admin = Auth::user()->admin;
+
+        return response()->json([
+            'success' => true,
+            'isAdmin' => $admin,
+        ]);
     }
 }

@@ -25,6 +25,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('users', [UserController::class, 'getUser']);
     Route::delete('users/{id}', [UserController::class, 'destroy']);
     Route::get('all-users', [UserController::class, 'index']);
+    Route::get('admin', [UserController::class, 'isAdmin']);
     Route::resource('games', GameController::class);
     Route::get('results', [ResultController::class, 'index']);
     Route::post('add-result', [ResultController::class, 'store']);
